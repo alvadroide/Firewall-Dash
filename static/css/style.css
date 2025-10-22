@@ -1,0 +1,173 @@
+/* --- NUEVO LAYOUT: "Cyber-Corp" --- */
+
+/* 1. Importar la nueva fuente (más limpia y moderna) */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
+
+body {
+    /* Fondo azul-púrpura oscuro */
+    background-color: #1a1b2f; 
+    /* Color de texto base (azul claro) */
+    color: #d0d8ff; 
+    /* Nueva fuente sans-serif */
+    font-family: 'Exo 2', sans-serif; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.game-container {
+    /* Hacemos la caja un poco más ancha */
+    width: 700px; 
+    /* Fondo azul-grisáceo */
+    background-color: #2a2c4b; 
+    /* Borde azul neón */
+    border: 2px solid #00bfff; 
+    padding: 25px;
+    /* Sombra azul suave */
+    box-shadow: 0 0 25px rgba(0, 191, 255, 0.5); 
+    border-radius: 10px; /* ¡Esquinas redondeadas! */
+    text-align: center;
+}
+
+h1 {
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+p {
+    font-size: 1.1em;
+    color: #a6afff; /* Un tono más suave para la descripción */
+}
+
+.hud {
+    display: flex;
+    justify-content: space-around;
+    /* Fondo "glassmorphism" (semi-transparente) */
+    background: rgba(255, 255, 255, 0.05); 
+    padding: 15px;
+    margin: 25px 0;
+    border: 1px solid #4a4e8a; /* Borde sutil */
+    border-radius: 8px;
+}
+
+.hud-item {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #a6afff;
+}
+
+#score, #timer {
+    font-size: 2.2em;
+    color: #00bfff; /* Color del borde para destacar */
+    font-weight: 700;
+}
+
+/* --- ¡El gran cambio de LAYOUT! --- */
+#firewall-grid {
+    display: grid;
+    /* 4 columnas de 120px */
+    grid-template-columns: repeat(4, 120px); 
+    gap: 15px; /* Más espacio entre círculos */
+    justify-content: center;
+    margin: 30px 0;
+    min-height: 525px; /* (4 * 120px + 3 * 15px) */
+}
+
+/* De cuadrados a círculos */
+.port {
+    width: 120px;
+    height: 120px;
+    /* Fondo de puerto "cerrado" */
+    background-color: #3b3e6e; 
+    /* Borde púrpura */
+    border: 3px solid #6d72c5; 
+    border-radius: 50%; /* ¡La magia para hacerlo un círculo! */
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.port:hover {
+    background-color: #4f539a;
+    border-color: #a6afff;
+}
+
+/* Puerto "Abierto" -> ¡Color de alto contraste! */
+.port.active {
+    /* Magenta brillante */
+    background-color: #ff00ff; 
+    border-color: #ffffff;
+    /* Doble brillo (exterior e interior) */
+    box-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff inset; 
+    animation: pulse 0.5s infinite alternate;
+}
+
+/* Feedback de clic correcto */
+.port.hit {
+    background-color: #00bfff; /* Azul brillante */
+    border-color: #fff;
+    transform: scale(1.05); /* Efecto de "hit" */
+    animation: none; /* Detener el pulso */
+}
+
+/* Feedback de clic incorrecto */
+.port.miss {
+    background-color: #e60000; /* Rojo */
+    border-color: #ff8080;
+    animation: shake 0.3s;
+}
+/* --- Fin del cambio de Layout --- */
+
+.start-button {
+    width: 100%;
+    background-color: #ff00ff; /* Combina con el puerto activo */
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    font-size: 1.6em;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.start-button:hover {
+    background-color: #c700c7; /* Magenta más oscuro */
+    box-shadow: 0 0 15px #ff00ff;
+}
+
+#feedback {
+    margin-top: 15px;
+    font-size: 1.2em;
+    height: 20px;
+}
+
+.highscore-box {
+    margin-top: 30px;
+    text-align: left;
+    border-top: 1px solid #4a4e8a; /* Borde sutil a juego con HUD */
+    padding-top: 15px;
+}
+
+#highscore-list {
+    list-style: none;
+    padding: 0;
+}
+
+#highscore-list li {
+    font-size: 1.1em;
+    padding: 3px 0;
+}
+
+/* --- Animaciones (Sin cambios, pero las dejamos) --- */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+@keyframes pulse {
+    from { opacity: 0.8; transform: scale(1); }
+    to { opacity: 1; transform: scale(1.02); }
+}

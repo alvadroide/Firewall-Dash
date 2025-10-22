@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firewall Dash</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="game-container">
+        <h1>Firewall Dash</h1>
+        <p>¡Haz clic en los puertos abiertos (verdes) antes de que se cierren!</p>
+
+        <div class="hud">
+            <div class="hud-item">
+                <h3>PUNTAJE</h3>
+                <span id="score">0</span>
+            </div>
+            <div class="hud-item">
+                <h3>TIEMPO</h3>
+                <span id="timer">30</span>
+            </div>
+        </div>
+
+        <div id="firewall-grid">
+            </div>
+
+        <button id="start-game" class="start-button">Iniciar Brecha</button>
+        
+        <div id="feedback"></div>
+
+        <div class="highscore-box">
+            <h3>Mejores Puntajes</h3>
+            <ul id="highscore-list"></ul>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/game.js') }}"></script>
+</body>
+</html>
